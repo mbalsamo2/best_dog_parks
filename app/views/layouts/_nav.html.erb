@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Best Dog Parks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= root_path %>"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <% if !current_user %>
+        <li class="nav-item active">
+          <a class="nav-link" href="<%= new_user_path %>"> Sign Up <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="<%= login_path %>"> Sign In <span class="sr-only">(current)</span></a>
+        </li>
+      <% end %>
+      <% if current_user %>
+         <li class="nav-item dropdown justify-content-end active">
+           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, <%= current_user.name %></a>
+         </li>
+         <li class="nav-item active">
+           <a class="nav-link" href="<%= logout_path %>"> Log Out <span class="sr-only">(current)</span></a>
+         </li>
+      <% end %>
+  </div>
+</nav>

@@ -5,18 +5,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
-    @user.password_digest = params[:user][:password_digest]
+    @user = User.new(user_params)
+    # @user.name = params[:user][:name]
+    # @user.email = params[:user][:email]
+    # @user.password_digest = params[:user][:password_digest]
     # @user.save
-
     if @user.save
+      session[:user_id] = @user.id
       redirect_to root_path
     else
-      render :new
+      raise params
+      redirect_to new_user_path
     end
-    # raise errors
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

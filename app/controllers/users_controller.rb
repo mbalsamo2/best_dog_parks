@@ -6,10 +6,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # @user.name = params[:user][:name]
-    # @user.email = params[:user][:email]
-    # @user.password_digest = params[:user][:password_digest]
-    # @user.save
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
@@ -18,6 +14,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
+
 
   private
 

@@ -1,1 +1,6 @@
-<h1><%= "#{current_user.name}'s Dog Parks" %></h1>
+<h1 class="text-center"><%= "#{current_user.name}'s Dog Parks" %></h1>
+<ol>
+  <% @parks.each do |park| %>
+    <li><%= park.name %></li>
+  <% end %>
+</ol>

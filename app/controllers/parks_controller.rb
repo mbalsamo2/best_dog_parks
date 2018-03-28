@@ -23,6 +23,10 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
   end
 
+  def edit
+    @park = Park.find(params[:id])
+  end
+
 
   private
 

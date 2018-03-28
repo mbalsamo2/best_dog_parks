@@ -3,4 +3,5 @@
   <% @parks.each do |park| %>
     <li><%= park.name %></li>
   <% end %>
+  <br><div><%= button_to "Add New Park", new_park_path , class: 'btn btn-info btn-md float-xl-none' %></div>
 </ol>

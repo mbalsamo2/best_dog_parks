@@ -4,4 +4,8 @@ class ParksController < ApplicationController
   def index
     @parks = current_user.parks
   end
+
+  def new
+
+  end
 end

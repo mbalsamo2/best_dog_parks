@@ -9,7 +9,7 @@
     <ol>
       <% @park.features.each do |feature| %>
         <li>
-          <%= feature.name %>
+          <%= link_to feature.name, feature_path(feature) %>
           <ul>
             <li>Rating: <%= feature.rating %> stars</li>
             <li>Comments: <%= feature.comment %></li>

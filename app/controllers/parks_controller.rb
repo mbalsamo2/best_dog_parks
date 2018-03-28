@@ -1,5 +1,6 @@
 class ParksController < ApplicationController
   before_action :authenticate_user
+  before_action :current_park, only: %i[show edit update]
 
   def index
     @parks = current_user.parks
@@ -20,17 +21,32 @@ class ParksController < ApplicationController
   end
 
   def show
-    @park = Park.find(params[:id])
+    current_park
   end
 
   def edit
-    @park = Park.find(params[:id])
+    if current_park
+      render :edit
+    else
+      redirect_to parks_path
+    end  
   end
 
+  def update
+    if @park.update(park_params)
+      redirect_to @park
+    else
+      render :edit
+    end
+  end
 
   private
 
   def park_params
     params.require(:park).permit(:name, :location, :user_id, feature_ids:[], features_attributes: %i[name rating comment])
+  end
+
+  def current_park
+    @park = Park.find(params[:id])
   end
 end

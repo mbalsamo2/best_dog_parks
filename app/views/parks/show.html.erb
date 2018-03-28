@@ -1,5 +1,21 @@
 <div style="padding:20px;">
-<h1><%= @park.name %></h1>
-<p><%= @park.location %></p>
-<div><%= button_to "Add a Park Feature", new_park_feature_path(@park) , class: 'btn btn-info btn-md float-xl-none' %></div>
+  <h1><%= @park.name %></h1>
+  <p><%= @park.location %></p>
+
+  <br>
+
+  <h3> Park Features </h3>
+    <ol>
+      <% @park.features.each do |feature| %>
+        <li>
+          <%= feature.name %>
+          <ul>
+            <li>Rating: <%= feature.rating %> stars</li>
+            <li>Comments: <%= feature.comment %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ol>
+  <div><%= button_to "Add a Park Feature", new_park_feature_path(@park) , class: 'btn btn-info btn-md float-xl-none' %></div>
+
 </div>

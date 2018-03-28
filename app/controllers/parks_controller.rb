@@ -27,6 +27,6 @@ class ParksController < ApplicationController
   private
 
   def park_params
-    params.require(:park).permit(:name, :location, :user_id)
+    params.require(:park).permit(:name, :location, :user_id, feature_ids:[], features_attributes: %i[name rating comment])
   end
 end

@@ -1,6 +1,7 @@
 <div style="padding:20px;">
   <h1><%= @park.name %></h1>
   <p><%= @park.location %></p>
+  <p><%= link_to "Edit Park", edit_park_path(@park)%> - <%= link_to "Delete Park", park_path(@park), method: :delete %></p>
 
   <br>
 

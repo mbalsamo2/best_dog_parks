@@ -21,7 +21,6 @@ class ParksController < ApplicationController
   end
 
   def show
-    current_park
   end
 
   def edit

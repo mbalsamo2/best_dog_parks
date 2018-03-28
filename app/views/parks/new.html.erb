@@ -1,1 +1,11 @@
-<h1> Add a New Park </h1>
+<h1 class="text-center"> Add a New Park </h1>
+
+<div style="padding:20px;">
+<%= form_for(@park) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+  <%= f.label :location %>
+  <%= f.text_field :location %><br><br>
+  <%= f.submit %>
+<% end %>
+</div>

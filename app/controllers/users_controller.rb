@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def new
+    # binding.pry
     @user = User.new
   end
 
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      raise params
       redirect_to new_user_path
     end
   end

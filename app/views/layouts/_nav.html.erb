@@ -6,10 +6,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= root_path %>"> Home <span class="sr-only">(current)</span></a>
+      </li>
       <% if !current_user %>
-        <li class="nav-item active">
-          <a class="nav-link" href="<%= root_path %>"> Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item active">
           <a class="nav-link" href="<%= new_user_path %>"> Sign Up <span class="sr-only">(current)</span></a>
         </li>
@@ -18,14 +18,13 @@
         </li>
       <% end %>
       <% if current_user %>
-        <li class="nav-item active">
-          <a class="nav-link" href="<%= parks_path %>"> Home <span class="sr-only">(current)</span></a>
-        </li>
          <li class="nav-item dropdown justify-content-end active">
            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, <%= current_user.name %></a>
-         </li>
-         <li class="nav-item active">
-           <a class="nav-link" href="<%= logout_path %>"> Log Out <span class="sr-only">(current)</span></a>
+           <div class="dropdown-menu">
+             <%= link_to "My Parks", parks_path, class: 'dropdown-item' %>
+             <div class="dropdown-divider"></div>
+             <%= link_to "Log Out", logout_path, class: 'dropdown-item' %>
+           </div>
          </li>
       <% end %>
   </div>

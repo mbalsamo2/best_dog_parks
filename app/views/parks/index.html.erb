@@ -1,7 +1,7 @@
 <h1 class="text-center"><%= "#{current_user.name}'s Dog Parks" %></h1>
 <ol>
   <% @parks.each do |park| %>
-    <li><%= park.name %></li>
+    <li><%= link_to park.name, park_path(park) %></li>
   <% end %>
   <br><div><%= button_to "Add New Park", new_park_path , class: 'btn btn-info btn-md float-xl-none' %></div>
 </ol>

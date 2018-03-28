@@ -18,4 +18,8 @@ class User < ApplicationRecord
     end
   end
 
+  def favorite_features
+    self.features.where("rating = 5")
+  end
+
 end

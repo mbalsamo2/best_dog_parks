@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :features
 
+  get '/users/favorites' => 'features#favorites', as: :favorite_features
   post '/users/new'
   post '/parks/new'
   get '/auth/:provider/callback' => 'sessions#create', as: :auth_login

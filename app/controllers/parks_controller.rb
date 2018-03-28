@@ -48,6 +48,10 @@ class ParksController < ApplicationController
     end
   end
 
+  def favorites
+    @favorites = current_user.favorite_parks
+  end
+
   private
 
   def park_params

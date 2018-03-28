@@ -1,4 +1,9 @@
 class FeaturesController < ApplicationController
+  before_action :authenticate_user, only: [:index]
+
+  def index
+    @features = current_user.features
+  end
 
   def new
     @park = Park.find(params[:park_id])

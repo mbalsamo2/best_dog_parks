@@ -1,1 +1,6 @@
-<h1> New Feature <%= @feature.name %></h1>
+<div style="padding:20px;">
+  <h1><%= @feature.name %></h1>
+  <p>Rating: <%= @feature.rating %></p>
+  <p>Comments: <%= @feature.comment %></p>
+  <p>Found at: <%= link_to @feature.parks.first.name, park_path(@feature.parks.first) %></p>
+</div>

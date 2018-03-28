@@ -1,5 +1,5 @@
 class FeaturesController < ApplicationController
-  before_action :authenticate_user, only: [:index]
+  before_action :authenticate_user
 
   def index
     @features = current_user.features

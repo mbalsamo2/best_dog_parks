@@ -1,6 +1,6 @@
 class ParksController < ApplicationController
   before_action :authenticate_user
-  before_action :current_park, only: %i[show edit update]
+  before_action :current_park, only: %i[show edit update destroy]
 
   def index
     @parks = current_user.parks
@@ -29,7 +29,7 @@ class ParksController < ApplicationController
       render :edit
     else
       redirect_to parks_path
-    end  
+    end
   end
 
   def update
@@ -37,6 +37,15 @@ class ParksController < ApplicationController
       redirect_to @park
     else
       render :edit
+    end
+  end
+
+  def destroy
+    park_name = @park.name
+    if @park.delete
+      redirect_to parks_path
+    else
+      render :show
     end
   end
 

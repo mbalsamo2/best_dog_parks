@@ -11,7 +11,7 @@ Specs:
 [X] Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients)
   - user has many features, through parks
 [X] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
- - user can create a feature?
+ - user can create a feature
 [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
   - User
       validates :email, presence: true

@@ -130,8 +130,6 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
-    rack-flash3 (1.0.5)
-      rack
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
@@ -226,7 +224,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   pry
   puma (~> 3.7)
-  rack-flash3
   rails (~> 5.1.5)
   sass-rails (~> 5.0)
   selenium-webdriver

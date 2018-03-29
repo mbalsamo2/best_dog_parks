@@ -5,14 +5,11 @@ Rails.application.routes.draw do
 
   resources :parks do
     resources :features, only: %i[index create new edit]
-    post '/features/new'
   end
 
   resources :features
 
   get '/users/favorites' => 'features#favorites', as: :favorite_features
-  post '/users/new'
-  post '/parks/new'
   get '/auth/:provider/callback' => 'sessions#create', as: :auth_login
   get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'

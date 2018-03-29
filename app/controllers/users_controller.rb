@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       render :new
+      binding.pry
     end
   end
 

@@ -1,13 +1,5 @@
 <h1 class="text-center"> Add a New Feature to <%= @park.name %></h1>
 
 <div style="padding:20px;">
-  <%= form_for ([@park, @feature]) do |f| %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br><br>
-    <%= f.label "Rating (1-5)" %><br>
-    <%= f.number_field :rating %><br><br>
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %><br><br>
-    <%= f.submit %>
-  <% end %>
+  <%= render 'form' %>
 </div>

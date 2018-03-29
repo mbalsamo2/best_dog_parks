@@ -15,8 +15,10 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
     @feature.park_ids = params[:park_id]
     if @feature.save
+      flash[:success] = "Successfully created a new feature!"
       redirect_to @feature
     else
+      flash[:error] = "There was an error while creating a new feature!"
       render :new
     end
   end
@@ -33,9 +35,12 @@ class FeaturesController < ApplicationController
   end
 
   def update
+    feature_name = @feature.name
     if @feature.update(feature_params)
+      flash[:success] = "Successfully updated #{feature_name}!"
       redirect_to @feature
     else
+      flash[:error] = "There was an error while editing #{feature_name}!"
       render :edit
     end
   end
@@ -43,8 +48,10 @@ class FeaturesController < ApplicationController
   def destroy
     feature_name = @feature.name
     if @feature.delete
+      flash[:success] = "Successfully deleted #{feature_name}!"
       redirect_to features_path
     else
+      flash[:error] = "There was an error while deleting #{feature_name}!"
       render :show
     end
   end

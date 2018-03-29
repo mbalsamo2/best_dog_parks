@@ -6,6 +6,8 @@ Specs:
   - park has many features
   - user has many parks
 [X] Include at least one belongs_to relationship (x belongs_to y e.g. Post belongs_to User)
+  - Park belongs_to User
+  - Join Table belongs_to Park and Features
 [X] Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients)
   - user has many features, through parks
 [X] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
@@ -42,5 +44,5 @@ Confirm:
 
 [X] The application is pretty DRY
 [X] Limited logic in controllers
-[] Views use helper methods if appropriate
+[X] Views use helper methods if appropriate
 [X] Views use partials if appropriate

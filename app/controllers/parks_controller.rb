@@ -14,8 +14,10 @@ class ParksController < ApplicationController
     @park = Park.new(park_params)
     @park.user_id = current_user.id
     if @park.save
+      flash[:success] = "Successfully created a new park!"
       redirect_to @park
     else
+      flash[:error] = "There was an error while creating a new park!"
       render :new
     end
   end
@@ -32,9 +34,12 @@ class ParksController < ApplicationController
   end
 
   def update
+    park_name = @park.name
     if @park.update(park_params)
+      flash[:success] = "Successfully updated #{park_name}!"
       redirect_to @park
     else
+      flash[:error] = "There was an error while editing #{park_name}!"
       render :edit
     end
   end
@@ -42,8 +47,10 @@ class ParksController < ApplicationController
   def destroy
     park_name = @park.name
     if @park.delete
+      flash[:success] = "Successfully deleted #{park_name}!"
       redirect_to parks_path
     else
+      flash[:error] = "There was an error while deleting #{park_name}!"
       render :show
     end
   end

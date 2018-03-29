@@ -1,0 +1,8 @@
+<br>
+
+<p> Error(s): </p>
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li class="text-danger"><%= error %></li>
+  <% end %>
+</ul>

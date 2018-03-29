@@ -1,6 +1,9 @@
 <div style="padding:20px;">
   <h1> Sign up here: </h1>
 
+  <%= render 'error_messages' if @user.errors.full_messages != [] %>
+
+
   <%= form_for(@user) do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %><br><br>
@@ -10,4 +13,6 @@
     <%= f.text_field :password %><br><br>
     <%= f.submit %>
   <% end %>
+
+
 </div>

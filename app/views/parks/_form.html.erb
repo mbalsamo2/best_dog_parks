@@ -1,3 +1,5 @@
+<%= render 'error_messages' if @park.errors.full_messages != [] %>
+
 <%= form_for(@park) do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %><br><br>

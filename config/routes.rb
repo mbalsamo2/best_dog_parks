@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
 
   resources :parks do
-    resources :features, only: %i[index create new edit]
+    resources :features, only: %i[create new edit]
   end
 
   resources :features
 
+  get '/parks/:park_id/features' => 'parks#feature_index', as: :park_features_index
   get '/users/favorites' => 'features#favorites', as: :favorite_features
   get '/auth/:provider/callback' => 'sessions#create', as: :auth_login
   get '/logout' => 'sessions#destroy'

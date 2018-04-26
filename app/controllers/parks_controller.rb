@@ -59,6 +59,10 @@ class ParksController < ApplicationController
     @favorites = current_user.favorite_parks
   end
 
+  def feature_index
+    binding.pry
+  end
+
   private
 
   def park_params

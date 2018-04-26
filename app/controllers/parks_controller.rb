@@ -60,7 +60,8 @@ class ParksController < ApplicationController
   end
 
   def feature_index
-    binding.pry
+    @park = Park.find(params[:park_id])
+    # binding.pry
   end
 
   private

@@ -1,5 +1,17 @@
-<h1> park features wahoo! </h1>
-
 <% if @park %>
-  <h1> Your features for <%= @park.name %></h1>
+<div style="padding:20px;">
+  <h1>Features found at: <%= @park.name %></h1>
+    <ol>
+      <% @park.features.each do |feature| %>
+        <li>
+          <%= link_to feature.name, feature_path(feature) %>
+          <ul>
+            <li>Rating: <%= feature.rating %> stars</li>
+            <li>Comments: <%= feature.comment %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ol>
+    <div><%= button_to "Add a Park Feature", new_park_feature_path(@park), method: :get, class: 'btn btn-info btn-md float-xl-none' %></div>
+  </div>
 <% end %>

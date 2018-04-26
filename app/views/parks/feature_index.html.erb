@@ -1,6 +1,6 @@
 <% if @park %>
 <div style="padding:20px;">
-  <h1>Features found at: <%= @park.name %></h1>
+  <h1><%= @park.name %>'s Features</h1>
     <ol>
       <% @park.features.each do |feature| %>
         <li>

@@ -6,6 +6,7 @@ $(document).ready(function() {
     })
       .done(function(data) {
         console.log(data)
+        $("div.park_features").append(data);
       })
 
     e.preventDefault();

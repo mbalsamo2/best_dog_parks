@@ -61,7 +61,7 @@ class ParksController < ApplicationController
 
   def feature_index
     @park = Park.find(params[:park_id])
-    render 'parks/feature_index', :layout => false
+    render :layout => false
   end
 
   private

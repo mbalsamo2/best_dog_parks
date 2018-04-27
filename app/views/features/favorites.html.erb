@@ -1,13 +1,15 @@
-<h1 class="text-center"><%= current_user.name %>'s Favorite Features </h1>
+<div style="padding:20px;">
+  <h1 class="text-center"><%= current_user.name %>'s Favorite Features </h1>
 
-<h3>Feature Rating of 5 stars:</h3>
+  <h3>Feature Rating of 5 stars:</h3>
 
-<% if current_user.favorite_features == [] %>
-  <p> You don't have any 5 star rated features yet! </p>
-<% else %>
-  <ul>
-    <% current_user.favorite_features.each do |fav_feature| %>
-     <li><%= link_to fav_feature.name, feature_path(fav_feature) %> (Found at <%= link_to fav_feature.parks.first.name, park_path(fav_feature.parks.first) %>)</li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if current_user.favorite_features == [] %>
+    <p> You don't have any 5 star rated features yet! </p>
+  <% else %>
+    <ul>
+      <% current_user.favorite_features.each do |fav_feature| %>
+       <li><%= link_to fav_feature.name, feature_path(fav_feature) %> (Found at <%= link_to fav_feature.parks.first.name, park_path(fav_feature.parks.first) %>)</li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

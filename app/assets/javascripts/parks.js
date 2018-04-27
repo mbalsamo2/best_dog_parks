@@ -3,12 +3,9 @@ $(document).ready(function() {
     $.ajax({
       method: "GET",
       url: this.href
-    })
-      .done(function(data) {
-        console.log(data)
-        $("div.park_features").append(data);
-      })
-
+    }).done(function(data) {
+        $("div.park_features").html(data);
+      });
     e.preventDefault();
   });
 })

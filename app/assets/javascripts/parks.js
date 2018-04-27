@@ -17,16 +17,17 @@ $(document).ready(function() {
   });
 
   // ajax request to show new features form on park show page
-  $("input#new_feature").on("click", function(e) {
-    $.ajax({
-      method: "GET",
-      url: "/parks/4/features/new"
-    }).done(function(response) {
-      console.log(response)
-    })
-
-    e.preventDefault();
-  });
 
 
 })
+
+$("input#new_feature").on("click", function(e) {
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/parks/4/features/new"
+  // }).done(function(response) {
+  //   console.log(response)
+  // })
+  alert("you clicked it dude!")
+  e.preventDefault();
+});

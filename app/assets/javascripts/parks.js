@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("a#load_features").on("click", function(e) {
     $.ajax({
       method: "GET",
-      url: "/parks/4/features"
+      url: this.href
     })
       .done(function(data) {
         console.log(data)

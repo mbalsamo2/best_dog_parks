@@ -8,10 +8,14 @@ class FeaturesController < ApplicationController
   end
 
   def new
+    binding.pry
+    @feature = @park.features.build
   end
 
   def create
     @feature = @park.features.build(feature_params)
+    @feature.park = @park
+    # binding.pry
     if @feature.save
       flash[:success] = "Successfully created a new feature!"
       redirect_to @park
@@ -23,6 +27,7 @@ class FeaturesController < ApplicationController
 
   def show
     @feature = Feature.find(params[:id])
+    binding.pry
   end
 
   def edit

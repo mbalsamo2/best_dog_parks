@@ -8,15 +8,13 @@ class FeaturesController < ApplicationController
   end
 
   def new
-    @feature = @park.features.new
   end
 
   def create
-    @feature = Feature.new(feature_params)
-    @feature.park_ids = params[:park_id]
+    @feature = @park.features.build(feature_params)
     if @feature.save
       flash[:success] = "Successfully created a new feature!"
-      redirect_to park_path(@park)
+      redirect_to @park
     else
       flash[:error] = "There was an error while creating a new feature!"
       render :new

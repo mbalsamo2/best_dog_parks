@@ -12,15 +12,37 @@ $(document).ready(function() {
     }).done(function(data) {
         $("div.park_features").html(data);
       })
-
-
   });
-
-  // ajax request to show new features form on park show page
-
-
 })
 
+// does not work
+// document.addEventListener("turbolinks:load", function() {
+//   $("a#load_features").on("click", function(e) {
+//     e.preventDefault();
+//
+//     $.ajax({
+//       method: "GET",
+//       url: this.href
+//     }).done(function(data) {
+//         $("div.park_features").html(data);
+//   })
+// })
+
+// does not work
+// $(document).on('page:change', function() {
+//   $("a#load_features").on("click", function(e) {
+//     e.preventDefault();
+//
+//     $.ajax({
+//       method: "GET",
+//       url: this.href
+//     }).done(function(data) {
+//         $("div.park_features").html(data);
+//   })
+// })
+
+
+  // ajax request to show new features form on park show page
 $("input#new_feature").on("click", function(e) {
   // $.ajax({
   //   method: "GET",

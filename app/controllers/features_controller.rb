@@ -8,7 +8,7 @@ class FeaturesController < ApplicationController
   end
 
   def new
-    binding.pry
+    # binding.pry
     @feature = @park.features.build
   end
 

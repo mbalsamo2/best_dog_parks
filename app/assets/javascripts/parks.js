@@ -4,7 +4,7 @@ $(document).ready(function() {
     // $.get(this.href).success(function(data) {
     //   $("div.park_features").html(data)
     // })
-
+    e.preventDefault();
   // ajax request to show index of park features on park show page
     $.ajax({
       method: "GET",
@@ -13,7 +13,7 @@ $(document).ready(function() {
         $("div.park_features").html(data);
       })
 
-    e.preventDefault();
+
   });
 
   // ajax request to show new features form on park show page

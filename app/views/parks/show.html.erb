@@ -6,7 +6,7 @@
   <br>
 
 
-  <h3><%= @park.name %>'s Features</h3>
+  <!-- <h3><%= @park.name %>'s Features</h3>
     <ol>
       <% @park.features.each do |feature| %>
         <li>
@@ -27,7 +27,7 @@
   <%= f.label :comment %><br>
   <%= f.text_area :comment %><br><br>
   <%= f.submit %>
-<% end %>
+<% end %> -->
 
 
 <h3><%= link_to "Park Features", park_features_index_path(@park), :id => "load_features" %></h3>

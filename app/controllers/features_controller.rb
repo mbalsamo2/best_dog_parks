@@ -24,6 +24,11 @@ class FeaturesController < ApplicationController
   end
 
   def show
+    # binding.pry
+    @feature = Feature.find(params[:id])
+    #
+    # @park = Park.find(params[:park_id])
+    # @feature = @park.features.find(params[:id])
   end
 
   def edit

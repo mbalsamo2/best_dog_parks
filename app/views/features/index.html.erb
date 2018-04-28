@@ -1,6 +1,7 @@
 <h1 class="text-center"><%= "#{current_user.name}'s Park Features" %></h1>
 <ol>
   <% @features.each do |feature| %>
-    <li><%= link_to feature.name, feature_path(feature) %></li>
+
+    <li><%= feature.name %></li>
   <% end %>
 </ol>

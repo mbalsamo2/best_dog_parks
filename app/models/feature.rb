@@ -1,5 +1,6 @@
 class Feature < ApplicationRecord
-  belongs_to :park
+  has_many :park_features
+  has_many :parks, through: :park_features
 
   validates :name, presence: true
   validates :rating, inclusion: { in: 1..5 }

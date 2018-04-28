@@ -1,7 +1,7 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user
   before_action :current_feature, only: %i[show edit update destroy]
-  before_action :current_park, only: %i[new, create]
+  # before_action :current_park, only: %i[new, create]
 
   def index
     @features = current_user.features
@@ -13,12 +13,12 @@ class FeaturesController < ApplicationController
   end
 
   def create
-    @feature = @park.features.build(feature_params)
-    @feature.park = @park
+    @feature = Feature.new(feature_params)
+    @feature.park_ids = params[:park_id]
     # binding.pry
     if @feature.save
       flash[:success] = "Successfully created a new feature!"
-      redirect_to @park
+      redirect_to @feature
     else
       flash[:error] = "There was an error while creating a new feature!"
       render :new
@@ -27,7 +27,6 @@ class FeaturesController < ApplicationController
 
   def show
     @feature = Feature.find(params[:id])
-    binding.pry
   end
 
   def edit

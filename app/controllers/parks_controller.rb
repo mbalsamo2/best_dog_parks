@@ -23,7 +23,7 @@ class ParksController < ApplicationController
   end
 
   def show
-    @feature = @park.features.build
+    @feature = @park.features.new
   end
 
   def edit

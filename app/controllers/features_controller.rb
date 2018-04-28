@@ -1,14 +1,14 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user
   before_action :current_feature, only: %i[show edit update destroy]
+  before_action :current_park, only: %i[new, create]
 
   def index
     @features = current_user.features
   end
 
   def new
-    @park = Park.find(params[:park_id])
-    @feature = @park.features.build
+    @feature = @park.features.new
   end
 
   def create
@@ -16,7 +16,7 @@ class FeaturesController < ApplicationController
     @feature.park_ids = params[:park_id]
     if @feature.save
       flash[:success] = "Successfully created a new feature!"
-      redirect_to @feature
+      redirect_to park_path(@park)
     else
       flash[:error] = "There was an error while creating a new feature!"
       render :new
@@ -65,5 +65,9 @@ class FeaturesController < ApplicationController
 
   def current_feature
     @feature = Feature.find(params[:id])
+  end
+
+  def current_park
+    @park = Park.find(params[:park_id])
   end
 end

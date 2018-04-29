@@ -1,7 +1,7 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user
   before_action :current_feature, only: %i[show edit update destroy]
-  # before_action :current_park, only: %i[new, create]
+  before_action :current_park, only: %i[new]
 
   def index
     @features = current_user.features

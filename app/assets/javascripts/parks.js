@@ -1,16 +1,29 @@
 $(document).on('turbolinks:load', function() {
+
+  // ajax request to show index of park features on park show page
   $('a#load_features').on('click', function(e) {
-
     e.preventDefault()
-
-    // ajax request to show index of park features on park show page
     console.log(this.href)
     $.get(this.href).done(function(data) {
       $('div.park_features').html(data)
     })
   })
+
+  // ajax request to show new features form on park show page
+  $('a#new_feature').on('click', function(e) {
+    e.preventDefault()
+    $.ajax({
+      method: "GET",
+      url: "/parks/4/features/new"
+    }).done(function(response) {
+      $("div.park_features").append(response);
+    })
+  })
+
 })
 
+
+// does not work
 // $(document).ready(function() {
 //   $("a#load_features").on("click", function(e) {
 //
@@ -53,16 +66,3 @@ $(document).on('turbolinks:load', function() {
 //         $("div.park_features").html(data);
 //   })
 // })
-
-
-  // ajax request to show new features form on park show page
-$("input#new_feature").on("click", function(e) {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/parks/4/features/new"
-  // }).done(function(response) {
-  //   console.log(response)
-  // })
-  alert("you clicked it dude!")
-  e.preventDefault();
-});

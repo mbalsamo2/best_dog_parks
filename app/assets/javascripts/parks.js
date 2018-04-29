@@ -1,15 +1,11 @@
 $(document).on('turbolinks:load', function() {
   $('a#load_features').on('click', function(e) {
-    // $.get(this.href).success(function(data) {
-    //   $("div.park_features").html(data)
-    // })
+
     e.preventDefault()
+
     // ajax request to show index of park features on park show page
     console.log(this.href)
-    $.ajax({
-      method: 'GET',
-      url: this.href,
-    }).done(function(data) {
+    $.get(this.href).done(function(data) {
       $('div.park_features').html(data)
     })
   })

@@ -6,6 +6,7 @@ $(document).on('turbolinks:load', function() {
     console.log(this.href)
     $.get(this.href).done(function(data) {
       $('div.park_features').html(data)
+      $('a#load_features').toggle();
     })
   })
 

@@ -5,6 +5,10 @@
 
   <br>
 
+  <h3><%= link_to "Park Features", park_features_index_path(@park), :id => "load_features" %></h3>
+
+
+  <div class="park_features"></div>
 
   <!-- <h3><%= @park.name %>'s Features</h3>
     <ol>
@@ -28,14 +32,5 @@
   <%= f.text_area :comment %><br><br>
   <%= f.submit %>
 <% end %> -->
-
-
-
-
-<h3><%= link_to "Park Features", park_features_index_path(@park), :id => "load_features" %></h3>
-
-
-  <div class="park_features">
-  </div>
 
 </div>

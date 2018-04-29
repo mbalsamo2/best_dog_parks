@@ -10,15 +10,15 @@ $(document).on('turbolinks:load', function() {
   })
 
   // ajax request to show new features form on park show page
-  $('a#new_feature').on('click', function(e) {
-    e.preventDefault()
-    $.ajax({
-      method: "GET",
-      url: "/parks/4/features/new"
-    }).done(function(response) {
-      $("div.park_features").append(response);
-    })
-  })
+  // $('a#new_feature').on('click', function(e) {
+  //   e.preventDefault()
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/parks/4/features/new"
+  //   }).done(function(response) {
+  //     $("div.park_features").append(response);
+  //   })
+  // })
 
 })
 

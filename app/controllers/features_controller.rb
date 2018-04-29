@@ -9,7 +9,7 @@ class FeaturesController < ApplicationController
 
   def new
     @feature = @park.features.build
-    # render :layout => false
+    render :layout => false
   end
 
   def create

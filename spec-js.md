@@ -13,6 +13,7 @@ Specs:
  Translate JSON responses into js model objects.
   - Not sure if this is being done...
  At least one of the js model objects must have at least one method added by your code to the prototype.
+  - example of this? 
 
 Confirm
 

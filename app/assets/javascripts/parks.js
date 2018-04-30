@@ -25,13 +25,6 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
-  // submit new feature via ajax
-   $('#new_feature_form').on('submit','#new_feature_form', function() {
-     debugger
-     console.log("hey")
-     alert("twas clicked!")
-   })
-
 })
 
 function Feature(id, name, rating, comment) {

@@ -4,6 +4,10 @@ class ParksController < ApplicationController
 
   def index
     @parks = current_user.parks
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @park }
+    end
   end
 
   def new

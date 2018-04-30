@@ -1,7 +1,7 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user
   before_action :current_feature, only: %i[show edit update destroy]
-  before_action :current_park, only: %i[new]
+  before_action :current_park, only: %i[new create]
 
   def index
     @features = current_user.features
@@ -17,6 +17,7 @@ class FeaturesController < ApplicationController
   end
 
   def create
+    # binding.pry
     @feature = Feature.new(feature_params)
     @feature.park_ids = params[:park_id]
     if @feature.save

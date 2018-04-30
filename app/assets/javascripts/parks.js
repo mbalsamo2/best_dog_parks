@@ -14,11 +14,14 @@ $(document).on('turbolinks:load', function() {
   $(document).on('click', 'a#new_feature', function(e) {
     e.preventDefault()
     // console.log(this.href)
+    // $.get(this.href.done(function(data) {
+    //   $('div.new_park_feature').html(response);
+    // })
     $.ajax({
       method: "GET",
       url: this.href
     }).done(function(response) {
-      $("div.new_park_feature").html(response);
+      $('div.new_park_feature').html(response);
     })
   })
 

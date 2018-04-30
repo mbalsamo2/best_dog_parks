@@ -22,9 +22,24 @@ $(document).on('turbolinks:load', function() {
       method: "GET",
       url: this.href
     }).done(function(response) {
+      $('div.new_park_feature').html("");
       $('div.new_park_feature').html(response);
     })
   })
+
+
+     // submit new feature via ajax
+  // $('form#new_feature').on('submit', 'form#new_feature', function(e) {
+  //     e.preventDefault()
+  //     $.ajax({
+  //       method: "POST",
+  //       url:
+  //       data:
+  //
+  //     })
+  //       console.log("hey")
+  //       alert("twas clicked!")
+  //   })
 
 })
 

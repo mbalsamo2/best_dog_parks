@@ -13,11 +13,12 @@ $(document).on('turbolinks:load', function() {
   // ajax request to show new features form on park show page
   $(document).on('click', 'a#new_feature', function(e) {
     e.preventDefault()
+    // console.log(this.href)
     $.ajax({
       method: "GET",
-      url: "/parks/4/features/new"
+      url: this.href
     }).done(function(response) {
-      $("div.park_features").append(response);
+      $("div.new_park_feature").html(response);
     })
   })
 

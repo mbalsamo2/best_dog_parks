@@ -5,6 +5,10 @@ class FeaturesController < ApplicationController
 
   def index
     @features = current_user.features
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @feature }
+    end
   end
 
   def new

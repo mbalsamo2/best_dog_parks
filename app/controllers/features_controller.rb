@@ -26,6 +26,10 @@ class FeaturesController < ApplicationController
 
   def show
     @feature = Feature.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @feature }
+    end
   end
 
   def edit

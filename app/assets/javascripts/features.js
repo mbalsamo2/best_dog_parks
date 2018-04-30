@@ -1,4 +1,4 @@
-var RandomVar = "Hellow"
+
 $(document).on('turbolinks:load', function() {
    // submit new feature via ajax
     $('form#new_feature').on('submit', 'form#new_feature', function(e) {

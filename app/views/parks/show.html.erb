@@ -7,31 +7,7 @@
 
   <h3><%= link_to "Park Features", park_features_index_path(@park), :id => "load_features" %></h3>
 
-
   <div class="park_features"></div>
   <div class="new_park_feature"></div>
-
-  <!-- <h3><%= @park.name %>'s Features</h3>
-    <ol>
-      <% @park.features.each do |feature| %>
-        <li>
-          <%= feature.name %>
-          <ul>
-            <li>Rating: <%= feature.rating %> stars</li>
-            <li>Comments: <%= feature.comment %></li>
-          </ul>
-        </li>
-      <% end %>
-    </ol>
-
-<%= form_for(@feature, :url => park_features_path(@park)) do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
-  <%= f.label "Rating (1-5)" %><br>
-  <%= f.number_field :rating %><br><br>
-  <%= f.label :comment %><br>
-  <%= f.text_area :comment %><br><br>
-  <%= f.submit %>
-<% end %> -->
 
 </div>

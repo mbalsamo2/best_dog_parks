@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function() {
     // $.get(this.href.done(function(data) {
     //   $('div.new_park_feature').html(response);
     // })
+
     $.ajax({
       method: "GET",
       url: this.href

@@ -1,6 +1,6 @@
 <%= render 'error_messages' if @feature.errors.full_messages != [] %>
 
-<%= form_for ([@park, @feature]) do |f| %>
+<%= form_for ([@park, @feature]), html: {id: :new_feature_form } do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %><br><br>
   <%= f.label "Rating (1-5)" %><br>

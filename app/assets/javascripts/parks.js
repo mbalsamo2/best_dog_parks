@@ -25,14 +25,22 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
-// create feature hijack post
-//function(e)
-// preventDefault
-// $.ajax
-// data
-// .serialize
+  // submit new feature via ajax
+   $('#new_feature_form').on('submit','#new_feature_form', function() {
+     debugger
+     console.log("hey")
+     alert("twas clicked!")
+   })
 
 })
+
+function Feature(id, name, rating, comment) {
+  this.id = id
+  this.name = name
+  this.rating = rating
+  this.comment = comment
+}
+
 
 
 // does not work

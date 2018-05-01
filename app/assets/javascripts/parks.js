@@ -1,28 +1,16 @@
 $(document).on('turbolinks:load', function() {
 
-  // ajax request to show index of park features on park show page, works but will try to append
+  // REQUIREMENT 1: ajax request to show index of park features on park show page
   $('a#load_features').on('click', function(e) {
     e.preventDefault()
     console.log(this.href)
     $.get(this.href + ".json").done(function(data) {
-      var features = []
       data.forEach(function(feature) {
         var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment)
-        // debugger
         var formattedFeature = newFeature.formatFeatureIndex();
-        // debugger
         $('div.park_features').append(formattedFeature)
-        // features.push(newFeature)
-      })
-
-
-
-
-          //iterate over and create another div to hold each feature
-          //append it all to main park features div
-
-        // $('div.park_features').html(data)
-        // $('a#load_features').toggle();
+        })
+        // add new form here maybe?
       })
     })
 
@@ -90,6 +78,7 @@ function Park(id, name, address, features) {
   this.features = features;
 }
 
+// REQUIREMENT 5: Use of prototype to format
 Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
   featureHtml += '<a href="#" class="feature-title" data-id=' + this.id + '>' + this.name + '</a>';
@@ -98,7 +87,6 @@ Feature.prototype.formatFeatureIndex = function() {
   featureHtml += '<li> Comment: ' + this.comment + '</li>';
   featureHtml += '</ul>';
   return featureHtml;
-  // debugger
 }
 
 // Park.prototype.formatFeatures = function() {

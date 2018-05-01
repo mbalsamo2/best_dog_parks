@@ -40,24 +40,6 @@ $(document).on('turbolinks:load', function() {
   //   })
 
 
-  // ajax request to show new features form on park show page
-  $(document).on('click', 'a#new_feature', function(e) {
-    e.preventDefault()
-    // console.log(this.href)
-    // $.get(this.href.done(function(data) {
-    //   $('div.new_park_feature').html(response);
-    // })
-
-    $.ajax({
-      method: "GET",
-      url: this.href
-    }).done(function(response) {
-      $('div.new_park_feature').html("");
-      $('div.new_park_feature').html(response);
-    })
-  })
-
-
      // submit new feature via ajax
   // $('form#new_feature').on('submit', 'form#new_feature', function(e) {
   //     e.preventDefault()
@@ -71,6 +53,23 @@ $(document).on('turbolinks:load', function() {
   //       alert("twas clicked!")
   //   })
 
+})
+
+// ajax request to show new features form on park show page
+$(document).on('click', 'a#new_feature', function(e) {
+  e.preventDefault()
+  // console.log(this.href)
+  // $.get(this.href.done(function(data) {
+  //   $('div.new_park_feature').html(response);
+  // })
+
+  $.ajax({
+    method: "GET",
+    url: this.href
+  }).done(function(response) {
+    $('div.new_park_feature').html("");
+    $('div.new_park_feature').html(response);
+  })
 })
 
 // make feautre object

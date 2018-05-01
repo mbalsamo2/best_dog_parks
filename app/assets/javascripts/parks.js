@@ -5,18 +5,26 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault()
     console.log(this.href)
     $.get(this.href + ".json").done(function(data) {
-
-      let feature = new Feature(data.name, data.rating, data.comment)
-      debugger
       var features = []
       data.forEach(function(feature) {
-        //iterate over and create another div to hold each feature
-        //append it all to main park features div
+        var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment)
+        // debugger
+        var formattedFeature = newFeature.formatFeatureIndex();
+        // debugger
+        $('div.park_features').append(formattedFeature)
+        // features.push(newFeature)
+      })
 
-      $('div.park_features').html(data)
-      $('a#load_features').toggle();
+
+
+
+          //iterate over and create another div to hold each feature
+          //append it all to main park features div
+
+        // $('div.park_features').html(data)
+        // $('a#load_features').toggle();
+      })
     })
-  })
 
 // attemp to get features to load through new feature object
   // $('a#load_features').on('click', function(e) {
@@ -32,20 +40,6 @@ $(document).on('turbolinks:load', function() {
   //     })
   //   })
   // })
-
-// attemp to get features to load through new park object
-  // $('a#load_features').on('click', function(e) {
-  //   e.preventDefault()
-  //   console.log(this.href)
-  //   $.get(this.href).done(function(resp) {
-  //     $('div.park_features').html("");
-  //
-  //       var park = new Park(resp.id, resp.name, resp.address, resp.features);
-  //       var formattedFeature = park.formatFeatures();
-  //       debugger
-  //       $('div.park_features').append(formattedFeature);
-  //     })
-  //   })
 
 
      // submit new feature via ajax
@@ -100,64 +94,21 @@ Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
   featureHtml += '<a href="#" class="feature-title" data-id=' + this.id + '>' + this.name + '</a>';
   featureHtml += '<ul>';
-  featureHtml += '<li> Rating:' + this.rating + 'stars</li>';
-  featureHtml += '<li> Comment:' + this.comment + '</li>';
+  featureHtml += '<li> Rating: ' + this.rating + 'stars</li>';
+  featureHtml += '<li> Comment: ' + this.comment + '</li>';
   featureHtml += '</ul>';
+  return featureHtml;
+  // debugger
 }
 
-Park.prototype.formatFeatures = function() {
-  var html = '';
-  let features = this.features
-
-  for (let i = 0; i < features.length; i++) {
-    html += `<a href="/features/${features[i].id}">${features[i].name} </a>`;
-  }
-
-  return html
-}
-
-
-
-// does not work
-// $(document).ready(function() {
-//   $("a#load_features").on("click", function(e) {
+// Park.prototype.formatFeatures = function() {
+//   var html = '';
+//   let features = this.features
 //
-//     // $.get(this.href).success(function(data) {
-//     //   $("div.park_features").html(data)
-//     // })
-//     e.preventDefault();
-//   // ajax request to show index of park features on park show page
-//     $.ajax({
-//       method: "GET",
-//       url: this.href
-//     }).done(function(data) {
-//         $("div.park_features").html(data);
-//       })
-//   });
-// })
-
-// does not work
-// document.addEventListener("turbolinks:load", function() {
-//   $("a#load_features").on("click", function(e) {
-//     e.preventDefault();
+//   for (let i = 0; i < features.length; i++) {
+//     html += `<a href="/features/${features[i].id}">${features[i].name} </a>`;
+//   }
 //
-//     $.ajax({
-//       method: "GET",
-//       url: this.href
-//     }).done(function(data) {
-//         $("div.park_features").html(data);
-//   })
+//   return html
 // })
-
-// does not work
-// $(document).on('page:change', function() {
-//   $("a#load_features").on("click", function(e) {
-//     e.preventDefault();
 //
-//     $.ajax({
-//       method: "GET",
-//       url: this.href
-//     }).done(function(data) {
-//         $("div.park_features").html(data);
-//   })
-// })

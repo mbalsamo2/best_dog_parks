@@ -4,7 +4,15 @@ $(document).on('turbolinks:load', function() {
   $('a#load_features').on('click', function(e) {
     e.preventDefault()
     console.log(this.href)
-    $.get(this.href).done(function(data) {
+    $.get(this.href + ".json").done(function(data) {
+
+      let feature = new Feature(data.name, data.rating, data.comment)
+      debugger
+      var features = []
+      data.forEach(function(feature) {
+        //iterate over and create another div to hold each feature
+        //append it all to main park features div
+
       $('div.park_features').html(data)
       $('a#load_features').toggle();
     })
@@ -78,7 +86,7 @@ function Feature(id, name, rating, comment) {
   this.name = name;
   this.rating = rating;
   this.comment = comment;
-  this.park_features = park_features;
+  // this.park_features = park_features;
 }
 
 function Park(id, name, address, features) {

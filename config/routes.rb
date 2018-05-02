@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :features, only: %i[create new edit]
   end
 
-  resources :features
+  resources :features, :except => [:new, :create]
 
   get '/parks/:park_id/features' => 'parks#feature_index', as: :park_features_index
   get '/users/favorites' => 'features#favorites', as: :favorite_features

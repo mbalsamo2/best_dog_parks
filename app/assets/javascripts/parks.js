@@ -86,7 +86,8 @@ function Park(id, name, address, features) {
 // REQUIREMENT 5: Use of prototype to format
 Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
-  featureHtml += '<a href="#" class="feature-title" data-id=' + this.id + '>' + this.name + '</a>';
+  // debugger
+  featureHtml += `<a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a>';
   featureHtml += '<ul>';
   featureHtml += '<li> Rating: ' + this.rating + ' star(s)</li>';
   featureHtml += '<li> Comment: ' + this.comment + '</li>';

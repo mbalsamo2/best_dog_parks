@@ -22,7 +22,7 @@ class FeaturesController < ApplicationController
     @feature.park_ids = params[:park_id]
     if @feature.save
       flash[:success] = "Successfully created a new feature!"
-      redirect_to @feature
+      redirect_to @park
     else
       flash[:error] = "There was an error while creating a new feature!"
       render :new

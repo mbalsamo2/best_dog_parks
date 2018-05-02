@@ -1,6 +1,6 @@
 <div style="padding:20px;">
   <h1><%= @feature.name %></h1>
-    <p><%= link_to "Edit Feature", edit_park_feature_path(@feature)%> - <%= link_to "Delete Feature", feature_path(@feature), method: :delete %></p>
+    <p><%= link_to "Edit Feature", edit_park_feature_path(@feature)%> - <%= link_to "Delete Feature", feature_path(@feature), method: :delete %> - <a href="#" class="js-next" data-id="<%=@feature.id%>">Next Feature</a></p>
   <br>
   <p>Rating: <%= @feature.rating %></p>
   <p>Comments: <%= @feature.comment %></p>

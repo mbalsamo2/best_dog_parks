@@ -6,7 +6,7 @@ class ParksController < ApplicationController
     @parks = current_user.parks
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @park }
+      format.json { render json: @parks }
     end
   end
 

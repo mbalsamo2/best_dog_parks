@@ -54,9 +54,48 @@ $(document).on('turbolinks:load', function() {
 
 
 // next park button
+// $(document).on('turbolinks:load', function() {
+//
+//   $.get('/parks.json', function(data) {
+//     parkValues = $.map(data, function(e) {
+//       return e.id
+//     })
+//   })
+//
+//   $('.js-next').on('click', function() {
+//     var nextIndex
+//     var dataIdIndex = parkValues.indexOf(parseInt($('.js-next').attr('data-id')))
+//     if (dataIdIndex === parkValues.length -1) {
+//       nextIndex = 0
+//     } else {
+//       nextIndex = dataIdIndex + 1
+//     }
+//     $.get('/parks/' + parkValues[nextIndex], function(data) {
+//       $
+//     })
+//   })
+// });
+
+// next feature button
 $(document).on('turbolinks:load', function() {
+
+  $.get('/features.json', function(data) {
+    featuresValues = $.map(data, function(e) {
+      return e.id
+    })
+  })
+
   $('.js-next').on('click', function() {
-    alert("you clicked it!")
+    var nextIndex
+    var dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
+    if (dataIdIndex === featuresValues.length -1) {
+      nextIndex = 0
+    } else {
+      nextIndex = dataIdIndex + 1
+    }
+    $.get('/features/' + featuresValues[nextIndex], function(data) {
+      $
+    })  
   })
 });
 

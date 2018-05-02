@@ -7,7 +7,7 @@ class FeaturesController < ApplicationController
     @features = current_user.features
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @feature }
+      format.json { render json: @features }
     end
   end
 

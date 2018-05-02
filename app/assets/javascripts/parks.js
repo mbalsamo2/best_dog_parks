@@ -53,22 +53,13 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-// ajax request to show new features form on park show page
-// $(document).on('click', 'a#new_feature', function(e) {
-//   e.preventDefault()
-//   // console.log(this.href)
-//   // $.get(this.href.done(function(data) {
-//   //   $('div.new_park_feature').html(response);
-//   // })
-//
-//   $.ajax({
-//     method: "GET",
-//     url: this.href
-//   }).done(function(response) {
-//     $('div.new_park_feature').html("");
-//     $('div.new_park_feature').html(response);
-//   })
-// })
+// next park button
+$(document).on('turbolinks:load', function() {
+  $('.js-next').on('click', function() {
+    alert("you clicked it!")
+  })
+});
+
 
 // make feautre object
 function Feature(id, name, rating, comment) {
@@ -97,15 +88,3 @@ Feature.prototype.formatFeatureIndex = function() {
   featureHtml += '</ul>';
   return featureHtml;
 }
-
-// Park.prototype.formatFeatures = function() {
-//   var html = '';
-//   let features = this.features
-//
-//   for (let i = 0; i < features.length; i++) {
-//     html += `<a href="/features/${features[i].id}">${features[i].name} </a>`;
-//   }
-//
-//   return html
-// })
-//

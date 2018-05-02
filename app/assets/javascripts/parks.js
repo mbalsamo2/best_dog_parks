@@ -35,20 +35,20 @@ $(document).on('turbolinks:load', function() {
     //     'comment': $("#feature_comment").val(),
     //   }
     // };
-    $.ajax({
-      type: "POST",
-      url: url
-      data: {
-        'authenticity_token': $("input[name='authenticity_token']").val(),
-        'feature': {
-          'name': $("#feature_name").val(),
-          'rating': $("#feature_rating").val(),
-          'comment': $("#feature_comment").val(),
-        }
-      success: function(response) {
-      debugger
-      }
-    })
+    // $.ajax({
+    //   type: "POST",
+    //   url: url
+    //   data: {
+    //     'authenticity_token': $("input[name='authenticity_token']").val(),
+    //     'feature': {
+    //       'name': $("#feature_name").val(),
+    //       'rating': $("#feature_rating").val(),
+    //       'comment': $("#feature_comment").val(),
+    //     }
+    //   success: function(response) {
+    //   debugger
+    //   }
+    // })
   })
 });
 

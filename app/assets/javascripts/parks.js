@@ -15,25 +15,26 @@ $(document).on('turbolinks:load', function() {
         // var newFeatureForm = '<h3><%= link_to "Add a Park Feature", new_park_feature_path(@park), :id => "new_feature" %></h3>'
         // $('div.new_park_feature').html(newFeatureForm);
     });
+    history.pushState(null, null, this);
   });
 });
 
 // submit new feature via ajax
-$(document).on('turbolinks:load', function() {
-  $('#new_feature').on('submit', function(e) {
-    e.preventDefault();
-    url = this.action
-    console.log(url)
-    debugger
-
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'feature': {
-        'name': $("#feature_name").val(),
-        'rating': $("#feature_rating").val(),
-        'comment': $("#feature_comment").val(),
-      }
-    };
+// $(document).on('turbolinks:load', function() {
+//   $('#new_feature').on('submit', function(e) {
+//     e.preventDefault();
+//     url = this.action
+//     console.log(url)
+//     debugger
+//
+//     data = {
+//       'authenticity_token': $("input[name='authenticity_token']").val(),
+//       'feature': {
+//         'name': $("#feature_name").val(),
+//         'rating': $("#feature_rating").val(),
+//         'comment': $("#feature_comment").val(),
+//       }
+//     };
     // $.ajax({
     //   type: "POST",
     //   url: url
@@ -42,9 +43,8 @@ $(document).on('turbolinks:load', function() {
     //   debugger
     // }
   // })
-
-  })
-});
+//   })
+// });
 
 
 // ajax request to show new features form on park show page

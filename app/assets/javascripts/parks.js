@@ -2,13 +2,14 @@ $(document).on('turbolinks:load', function() {
 
   // REQUIREMENT 1: ajax request to show index of park features on park show page
   $('a#load_features').on('click', function(e) {
-    e.preventDefault()
-    console.log(this.href)
+    e.preventDefault();
+    console.log(this.href);
     $.get(this.href + ".json").done(function(data) {
+      $('div.park_features').html('');
       data.forEach(function(feature) {
-        var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment)
+        var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment);
         var formattedFeature = newFeature.formatFeatureIndex();
-        $('div.park_features').append(formattedFeature)
+        $('div.park_features').append(formattedFeature);
         })
         // add new form here maybe?
       })

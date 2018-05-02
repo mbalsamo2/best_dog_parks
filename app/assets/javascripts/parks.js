@@ -10,9 +10,13 @@ $(document).on('turbolinks:load', function() {
         var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment);
         var formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
-        })
-        // add new form here maybe?
+      });
+      debugger
+        // var newFeatureForm = '<form class="new-todo" id="new_feature" action="/features" accept-charset="UTF-8" method="post"><label for="feature_name">Create a New Feature</label><br><input type="text" name="feature[name]" id="feature_name" class="new_todo" placeholder="Feature Name"><br><br><input type="text" name="feature[rating]" id="feature_rating" class="new_todo" placeholder="Feature Rating (1-5)"><br><br><input type="text" name="feature[comment]" id="feature_comment" class="new_todo" placeholder="Feature Comment"><br><br><input type="submit"></form>';
+        var newFeatureForm = '<h3><%= link_to "Add a Park Feature", new_park_feature_path(@park), :id => "new_feature" %></h3>'
+        $('div.new_park_feature').html(newFeatureForm);
       })
+      // history.pushState(null, null, '/features');
     })
 
 // attemp to get features to load through new feature object
@@ -84,7 +88,7 @@ Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
   featureHtml += '<a href="#" class="feature-title" data-id=' + this.id + '>' + this.name + '</a>';
   featureHtml += '<ul>';
-  featureHtml += '<li> Rating: ' + this.rating + 'stars</li>';
+  featureHtml += '<li> Rating: ' + this.rating + ' star(s)</li>';
   featureHtml += '<li> Comment: ' + this.comment + '</li>';
   featureHtml += '</ul>';
   return featureHtml;

@@ -20,31 +20,37 @@ $(document).on('turbolinks:load', function() {
 });
 
 // submit new feature via ajax
-// $(document).on('turbolinks:load', function() {
-//   $('#new_feature').on('submit', function(e) {
-//     e.preventDefault();
-//     url = this.action
-//     console.log(url)
-//     debugger
-//
-//     data = {
-//       'authenticity_token': $("input[name='authenticity_token']").val(),
-//       'feature': {
-//         'name': $("#feature_name").val(),
-//         'rating': $("#feature_rating").val(),
-//         'comment': $("#feature_comment").val(),
-//       }
-//     };
-    // $.ajax({
-    //   type: "POST",
-    //   url: url
-    //   data: data
-    //   success: function(response) {
-    //   debugger
-    // }
-  // })
-//   })
-// });
+$(document).on('turbolinks:load', function() {
+  $('#new_feature').on('submit', function(e) {
+    e.preventDefault();
+    url = this.action
+    console.log(url)
+    // debugger
+
+    // data = {
+    //   'authenticity_token': $("input[name='authenticity_token']").val(),
+    //   'feature': {
+    //     'name': $("#feature_name").val(),
+    //     'rating': $("#feature_rating").val(),
+    //     'comment': $("#feature_comment").val(),
+    //   }
+    // };
+    $.ajax({
+      type: "POST",
+      url: url
+      data: {
+        'authenticity_token': $("input[name='authenticity_token']").val(),
+        'feature': {
+          'name': $("#feature_name").val(),
+          'rating': $("#feature_rating").val(),
+          'comment': $("#feature_comment").val(),
+        }
+      success: function(response) {
+      debugger
+      }
+    })
+  })
+});
 
 
 // ajax request to show new features form on park show page

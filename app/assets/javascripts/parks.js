@@ -43,6 +43,7 @@ function bindEventListeners() {
       url: url,
       data: data,
       success: function(response) {
+        debugger
         var newFeature = new Feature(response.id, response.name, response.rating, response.comment);
         var formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
@@ -68,6 +69,21 @@ function bindEventListeners() {
       nextIndex = 0
     else
       nextIndex = dataIdIndex + 1
+
+// let i = 0
+// array = $.getJSON('path/user_parks')
+// onClick('#next'){
+//   renderNext(array[i])
+//   i++
+//   if(i == array.length) i = 0
+// }
+//
+// function renderNext(element) {
+//   $('#root').replaceWith(`<div>${ element }</div>`)
+// }
+//
+// <div id='root'></div>
+
 
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
       // debugger

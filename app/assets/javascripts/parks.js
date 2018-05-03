@@ -63,18 +63,27 @@ function bindEventListeners() {
   $('.js-next').on('click', function() {
     var nextIndex
     var dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
-    if (dataIdIndex === featuresValues.length -1) {
-      nextIndex = 0
-    } else {
-      nextIndex = dataIdIndex + 1
-    }
-    $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
 
-      $('#feature_show').html('')
-      var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
-      var showFeature = aFeature.formatFeatureShow();
-      $('#feature_show').append(showFeature)
+    if (dataIdIndex === featuresValues.length -1)
+      nextIndex = 0
+    else
+      nextIndex = dataIdIndex + 1
+
+    $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
+      // debugger
+      $('#name').html(`${data['name']} -
+      <a href="/features/${data['id']}/edit">Edit</a> -
+      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/items/${data['id']}">Delete</a>`)
+      $('#rating').html(`Rating: ${data['rating']}`)
+      $('#comment').html(`Comments: ${data['comment']}`)
+      // $('#feature_show').html('')
+      // var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
+      // var showFeature = aFeature.formatFeatureShow();
+      // $('#feature_show').append(showFeature)
+      history.pushState(null, null, '/features/' + data.id);
     })
+    // debugger
+
   })
 
 } //end of bindEventListeners function

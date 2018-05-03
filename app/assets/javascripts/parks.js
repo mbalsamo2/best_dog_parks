@@ -1,5 +1,11 @@
-// REQUIREMENT 3: reveals has-many relationship, a park has many features rendered on park show page
 $(document).on('turbolinks:load', function() {
+  console.log("parks.js loaded")
+  bindEventListeners();
+})
+
+
+function bindEventListeners() {
+  // REQUIREMENT 3: reveals has-many relationship, a park has many features rendered on park show page
   $('a#load_features').on('click', function(e) {
     e.preventDefault();
     console.log(this.href);
@@ -16,11 +22,8 @@ $(document).on('turbolinks:load', function() {
     });
     history.pushState(null, null, this);
   });
-});
-
 
 // REQUIREMENT 1: feature index page
-$(document).on('turbolinks:load', function() {
   $('a#load_features_index').on('click', function(e) {
     e.preventDefault();
     console.log(this.href)
@@ -33,45 +36,30 @@ $(document).on('turbolinks:load', function() {
       })
     })
   })
-})
 
 // REQUIREMENT 4: submit new feature via ajax
-$(document).on('turbolinks:load', function() {
   $('#new_feature').on('submit', function(e) {
     e.preventDefault();
     url = this.action
-    console.log(url)
+    console.log($(this).serialize())
     // debugger
 
-    // data = {
-    //   'authenticity_token': $("input[name='authenticity_token']").val(),
-    //   'feature': {
-    //     'name': $("#feature_name").val(),
-    //     'rating': $("#feature_rating").val(),
-    //     'comment': $("#feature_comment").val(),
-    //   }
+    const data = $(this).serialize()
     // };
-    // $.ajax({
-    //   type: "POST",
-    //   url: url
-    //   data: {
-    //     'authenticity_token': $("input[name='authenticity_token']").val(),
-    //     'feature': {
-    //       'name': $("#feature_name").val(),
-    //       'rating': $("#feature_rating").val(),
-    //       'comment': $("#feature_comment").val(),
-    //     }
-    //   success: function(response) {
-    //   debugger
-    //   }
-    // })
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response) {
+      console.log(response)
+      // create new model object
+      // call proto method o
+      // append
+      }
+    })
   })
-});
-
 
 // REQUIREMENT 2: next feature button (ALMOST WORKS)
-$(document).on('turbolinks:load', function() {
-
   $.get('/features.json', function(data) {
     featuresValues = $.map(data, function(e) {
       return e.id
@@ -95,7 +83,7 @@ $(document).on('turbolinks:load', function() {
 
     })
   })
-});
+}
 
 
 // make feautre object

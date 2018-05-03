@@ -25,7 +25,16 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     console.log(this.href)
     $.getJSON(this.href).done(function(data){
-      debugger
+      $('#feature_show').html('')
+      let featureList = ('')
+      data.forEach(function(feature) {
+        featureList += '<h1>Features:</h1><br>';
+        featureList += '<ol>';
+        featureList += `<li><a href="/features/${feature.id}" class="feature-title" data-id=` + feature.id + '>' + feature.name + '</a></li>';
+        featureList += '</ol>'
+        return featureList;
+      })
+      $('#feature_show').append(featureList)
     })
   })
 })

@@ -3,7 +3,7 @@ Specs:
  Use jQuery for implementing new requirements
 
  Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
-  - Render features index (working on it)
+  - Render features index page
  Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
   - clicking through each feature using next button (working on it)
  Include at least one has_many relationship in information rendered via JSON and appended to the DOM.

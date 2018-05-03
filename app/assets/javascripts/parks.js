@@ -19,21 +19,18 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-// REQUIREMENT 1: feature index page (can't get it to append/render)
+// REQUIREMENT 1: feature index page
 $(document).on('turbolinks:load', function() {
-  $('a#features_index').on('click', function(e) {
+  $('a#load_features_index').on('click', function(e) {
     e.preventDefault();
     console.log(this.href)
     $.getJSON(this.href).done(function(data){
-      $('#feature_show').html('')
-      let featureList = ('')
-      featureList += '<h1>Features:</h1><br>';
-      featureList += '<ol>';
+      $('div.features_index').html('')
       data.forEach(function(feature) {
-        featureList += `<li><a href="/features/${feature.id}" class="feature-title" data-id=` + feature.id + '>' + feature.name + '</a></li>';
+        var newFeatures = new Feature(feature.id, feature.name, feature.rating, feature.comment);
+        var formattedFeatures = newFeatures.formatFeaturesIndex();
+        $('div.features_index').append(formattedFeatures)
       })
-      featureList += '</ol>'
-      $('#feature_show').append(featureList)
     })
   })
 })
@@ -72,7 +69,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-// REQUIREMENT 2: next feature button ALMOST WORKS
+// REQUIREMENT 2: next feature button (ALMOST WORKS)
 $(document).on('turbolinks:load', function() {
 
   $.get('/features.json', function(data) {
@@ -138,26 +135,11 @@ Feature.prototype.formatFeatureShow = function() {
   return showHtml;
 }
 
-
-// next park button
-// $(document).on('turbolinks:load', function() {
-//
-//   $.get('/parks.json', function(data) {
-//     parkValues = $.map(data, function(e) {
-//       return e.id
-//     })
-//   })
-//
-//   $('.js-next').on('click', function() {
-//     var nextIndex
-//     var dataIdIndex = parkValues.indexOf(parseInt($('.js-next').attr('data-id')))
-//     if (dataIdIndex === parkValues.length -1) {
-//       nextIndex = 0
-//     } else {
-//       nextIndex = dataIdIndex + 1
-//     }
-//     $.get('/parks/' + parkValues[nextIndex], function(data) {
-//       $
-//     })
-//   })
-// });
+// REQUIREMENT 5: Use of prototype to format
+Feature.prototype.formatFeaturesIndex = function() {
+  var featureList = '';
+  featureList += '<ul>';
+  featureList += `<li><a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a></li>';
+  featureList += '</ul>'
+  return featureList;
+}

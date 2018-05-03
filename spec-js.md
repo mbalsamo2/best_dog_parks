@@ -2,12 +2,12 @@ Specs:
 
  Use jQuery for implementing new requirements
 
- Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
-  - show park show page
  Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
-  - On park show page, can render park features show page
+  - Render features index (working on it)
+ Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
+  - clicking through each feature using next button (working on it)
  Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-  - Is this requirement fulfilled through previous requirement? (park has_many features)
+  - Park has many features, rendered on park show page
  Use your Rails API and a form to create a resource and render the response without a page refresh.
   - Can this be "create new feature" within park show page?
  Translate JSON responses into js model objects.

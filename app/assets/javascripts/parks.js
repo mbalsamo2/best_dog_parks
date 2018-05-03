@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-// REQUIREMENT 1: feature index page
+// REQUIREMENT 1: feature index page (can't get it to append/render)
 $(document).on('turbolinks:load', function() {
   $('a#features_index').on('click', function(e) {
     e.preventDefault();
@@ -27,13 +27,12 @@ $(document).on('turbolinks:load', function() {
     $.getJSON(this.href).done(function(data){
       $('#feature_show').html('')
       let featureList = ('')
+      featureList += '<h1>Features:</h1><br>';
+      featureList += '<ol>';
       data.forEach(function(feature) {
-        featureList += '<h1>Features:</h1><br>';
-        featureList += '<ol>';
         featureList += `<li><a href="/features/${feature.id}" class="feature-title" data-id=` + feature.id + '>' + feature.name + '</a></li>';
-        featureList += '</ol>'
-        return featureList;
       })
+      featureList += '</ol>'
       $('#feature_show').append(featureList)
     })
   })

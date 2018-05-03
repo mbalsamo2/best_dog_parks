@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  console.log("parks.js loaded")
   bindEventListeners();
 })
 
@@ -16,9 +15,6 @@ function bindEventListeners() {
         var formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
       });
-        // var newFeatureForm = '<form class="new-todo" id="new_feature" action="/features" accept-charset="UTF-8" method="post"><label for="feature_name">Create a New Feature</label><br><input type="text" name="feature[name]" id="feature_name" class="new_todo" placeholder="Feature Name"><br><br><input type="text" name="feature[rating]" id="feature_rating" class="new_todo" placeholder="Feature Rating (1-5)"><br><br><input type="text" name="feature[comment]" id="feature_comment" class="new_todo" placeholder="Feature Comment"><br><br><input type="submit"></form>';
-        // var newFeatureForm = '<h3><%= link_to "Add a Park Feature", new_park_feature_path(@park), :id => "new_feature" %></h3>'
-        // $('div.new_park_feature').html(newFeatureForm);
     });
     history.pushState(null, null, this);
   });
@@ -40,24 +36,23 @@ function bindEventListeners() {
 // REQUIREMENT 4: submit new feature via ajax
   $('#new_feature').on('submit', function(e) {
     e.preventDefault();
-    url = this.action
-    console.log($(this).serialize())
-    // debugger
-
-    const data = $(this).serialize()
-    // };
+    url = this.action;
+    const data = $(this).serialize();
     $.ajax({
       type: "POST",
       url: url,
       data: data,
       success: function(response) {
-      console.log(response)
-      // create new model object
-      // call proto method o
-      // append
+        var newFeature = new Feature(response.id, response.name, response.rating, response.comment);
+        var formattedFeature = newFeature.formatFeatureIndex();
+        $('div.park_features').append(formattedFeature);
+        $('#feature_name').val('');
+        $('#feature_rating').val('');
+        $('#feature_comment').val('');
+        // $('input[type="submit"]').prop('disabled', false) // how do i get this to work?
       }
-    })
-  })
+    });
+  });
 
 // REQUIREMENT 2: next feature button (ALMOST WORKS)
   $.get('/features.json', function(data) {
@@ -130,4 +125,8 @@ Feature.prototype.formatFeaturesIndex = function() {
   featureList += `<li><a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a></li>';
   featureList += '</ul>'
   return featureList;
+}
+
+Feature.prototype.newFeatureFormat = function() {
+
 }

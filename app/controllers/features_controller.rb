@@ -58,9 +58,10 @@ class FeaturesController < ApplicationController
 
   def destroy
     feature_name = @feature.name
+    @park = @feature.parks.first
     if @feature.delete
       flash[:success] = "Successfully deleted #{feature_name}!"
-      redirect_to features_path
+      redirect_to park_path(@park)
     else
       flash[:error] = "There was an error while deleting #{feature_name}!"
       render :show

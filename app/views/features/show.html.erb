@@ -1,8 +1,8 @@
-<div style="padding:20px;">
-  <h1><%= @feature.name %></h1>
+<div style="padding:20px;" id="feature_show">
+  <h1 id="name"><%= @feature.name %></h1>
     <p><%= link_to "Edit Feature", edit_park_feature_path(@feature)%> - <%= link_to "Delete Feature", feature_path(@feature), method: :delete %> - <a href="#" class="js-next" data-id="<%=@feature.id%>">Next Feature</a></p>
   <br>
-  <p>Rating: <%= @feature.rating %></p>
-  <p>Comments: <%= @feature.comment %></p>
+  <p id="rating">Rating: <%= @feature.rating %></p>
+  <p id="comment">Comments: <%= @feature.comment %></p>
   <p>Found at: <%= link_to @feature.parks.first.name, park_path(@feature.parks.first) %></p>
 </div>

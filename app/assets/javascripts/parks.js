@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function() {
         var formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
       });
-      // debugger
         // var newFeatureForm = '<form class="new-todo" id="new_feature" action="/features" accept-charset="UTF-8" method="post"><label for="feature_name">Create a New Feature</label><br><input type="text" name="feature[name]" id="feature_name" class="new_todo" placeholder="Feature Name"><br><br><input type="text" name="feature[rating]" id="feature_rating" class="new_todo" placeholder="Feature Rating (1-5)"><br><br><input type="text" name="feature[comment]" id="feature_comment" class="new_todo" placeholder="Feature Comment"><br><br><input type="submit"></form>';
         // var newFeatureForm = '<h3><%= link_to "Add a Park Feature", new_park_feature_path(@park), :id => "new_feature" %></h3>'
         // $('div.new_park_feature').html(newFeatureForm);
@@ -19,7 +18,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-// submit new feature via ajax
+// REQUIREMENT 4: submit new feature via ajax
 $(document).on('turbolinks:load', function() {
   $('#new_feature').on('submit', function(e) {
     e.preventDefault();
@@ -76,7 +75,7 @@ $(document).on('turbolinks:load', function() {
 //   })
 // });
 
-// next feature button
+// REQUIREMENT 2: next feature button ALMOST WORKS
 $(document).on('turbolinks:load', function() {
 
   $.get('/features.json', function(data) {
@@ -93,9 +92,14 @@ $(document).on('turbolinks:load', function() {
     } else {
       nextIndex = dataIdIndex + 1
     }
-    $.get('/features/' + featuresValues[nextIndex], function(data) {
-      $
-    })  
+    $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
+
+      $('#feature_show').html('')
+      var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
+      var showFeature = aFeature.formatFeatureShow();
+      $('#feature_show').append(showFeature)
+
+    })
   })
 });
 
@@ -106,7 +110,6 @@ function Feature(id, name, rating, comment) {
   this.name = name;
   this.rating = rating;
   this.comment = comment;
-  // this.park_features = park_features;
 }
 
 function Park(id, name, address, features) {
@@ -126,4 +129,13 @@ Feature.prototype.formatFeatureIndex = function() {
   featureHtml += '<li> Comment: ' + this.comment + '</li>';
   featureHtml += '</ul>';
   return featureHtml;
+}
+
+// REQUIREMENT 5: Use of prototype to format
+Feature.prototype.formatFeatureShow = function() {
+  var showHtml = '';
+  showHtml += `<h1 id="name" data-id` + this.id + `>` + this.name + `</h1><br>`;
+  showHtml += '<p> Rating: ' + this.rating + ' star(s)</p><br>';
+  showHtml += '<p> Comment: ' + this.comment + '</p>';
+  return showHtml;
 }

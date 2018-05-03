@@ -19,6 +19,17 @@ $(document).on('turbolinks:load', function() {
 });
 
 
+// REQUIREMENT 1: feature index page
+$(document).on('turbolinks:load', function() {
+  $('a#features_index').on('click', function(e) {
+    e.preventDefault();
+    console.log(this.href)
+    $.getJSON(this.href).done(function(data){
+      debugger
+    })
+  })
+})
+
 // REQUIREMENT 4: submit new feature via ajax
 $(document).on('turbolinks:load', function() {
   $('#new_feature').on('submit', function(e) {

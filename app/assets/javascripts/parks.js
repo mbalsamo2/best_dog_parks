@@ -1,4 +1,4 @@
-// REQUIREMENT 1: ajax request to show index of park features on park show page
+// REQUIREMENT 3: reveals has-many relationship, a park has many features rendered on park show page
 $(document).on('turbolinks:load', function() {
   $('a#load_features').on('click', function(e) {
     e.preventDefault();
@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function() {
     history.pushState(null, null, this);
   });
 });
+
 
 // REQUIREMENT 4: submit new feature via ajax
 $(document).on('turbolinks:load', function() {
@@ -51,29 +52,6 @@ $(document).on('turbolinks:load', function() {
   })
 });
 
-
-// next park button
-// $(document).on('turbolinks:load', function() {
-//
-//   $.get('/parks.json', function(data) {
-//     parkValues = $.map(data, function(e) {
-//       return e.id
-//     })
-//   })
-//
-//   $('.js-next').on('click', function() {
-//     var nextIndex
-//     var dataIdIndex = parkValues.indexOf(parseInt($('.js-next').attr('data-id')))
-//     if (dataIdIndex === parkValues.length -1) {
-//       nextIndex = 0
-//     } else {
-//       nextIndex = dataIdIndex + 1
-//     }
-//     $.get('/parks/' + parkValues[nextIndex], function(data) {
-//       $
-//     })
-//   })
-// });
 
 // REQUIREMENT 2: next feature button ALMOST WORKS
 $(document).on('turbolinks:load', function() {
@@ -112,6 +90,7 @@ function Feature(id, name, rating, comment) {
   this.comment = comment;
 }
 
+// make park object
 function Park(id, name, address, features) {
   this.id = id;
   this.name = name;
@@ -139,3 +118,27 @@ Feature.prototype.formatFeatureShow = function() {
   showHtml += '<p> Comment: ' + this.comment + '</p>';
   return showHtml;
 }
+
+
+// next park button
+// $(document).on('turbolinks:load', function() {
+//
+//   $.get('/parks.json', function(data) {
+//     parkValues = $.map(data, function(e) {
+//       return e.id
+//     })
+//   })
+//
+//   $('.js-next').on('click', function() {
+//     var nextIndex
+//     var dataIdIndex = parkValues.indexOf(parseInt($('.js-next').attr('data-id')))
+//     if (dataIdIndex === parkValues.length -1) {
+//       nextIndex = 0
+//     } else {
+//       nextIndex = dataIdIndex + 1
+//     }
+//     $.get('/parks/' + parkValues[nextIndex], function(data) {
+//       $
+//     })
+//   })
+// });

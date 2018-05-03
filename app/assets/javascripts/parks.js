@@ -60,7 +60,6 @@ function bindEventListeners() {
       return e.id
     })
   })
-
   $('.js-next').on('click', function() {
     var nextIndex
     var dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
@@ -75,10 +74,10 @@ function bindEventListeners() {
       var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
       var showFeature = aFeature.formatFeatureShow();
       $('#feature_show').append(showFeature)
-
     })
   })
-}
+
+} //end of bindEventListeners function
 
 
 // make feautre object
@@ -89,18 +88,9 @@ function Feature(id, name, rating, comment) {
   this.comment = comment;
 }
 
-// make park object
-function Park(id, name, address, features) {
-  this.id = id;
-  this.name = name;
-  this.address = address;
-  this.features = features;
-}
-
 // REQUIREMENT 5: Use of prototype to format
 Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
-  // debugger
   featureHtml += `<a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a>';
   featureHtml += '<ul>';
   featureHtml += '<li> Rating: ' + this.rating + ' star(s)</li>';
@@ -125,8 +115,4 @@ Feature.prototype.formatFeaturesIndex = function() {
   featureList += `<li><a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a></li>';
   featureList += '</ul>'
   return featureList;
-}
-
-Feature.prototype.newFeatureFormat = function() {
-
 }

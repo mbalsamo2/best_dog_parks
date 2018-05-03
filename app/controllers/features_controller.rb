@@ -17,7 +17,6 @@ class FeaturesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @feature = Feature.new(feature_params)
     @feature.park_ids = params[:park_id]
     if @feature.save

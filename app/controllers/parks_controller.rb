@@ -70,12 +70,10 @@ class ParksController < ApplicationController
 
   def feature_index
     @park = Park.find(params[:park_id])
-    # @feature = @park.features.build
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @park.features }
     end
-    # render :layout => false
   end
 
   private

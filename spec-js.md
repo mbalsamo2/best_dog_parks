@@ -17,7 +17,7 @@ Specs:
 
 Confirm
 
- You have a large number of small Git commits: Yes, over 70.
+ You have a large number of small Git commits: Yes, over 80.
  Your commit messages are meaningful: Yes
  You made the changes in a commit that relate to the commit message: Yes
  You don't include changes in a commit that aren't related to the commit message: for the most part, no.

@@ -34,7 +34,6 @@ class FeaturesController < ApplicationController
       format.html { render :show }
       format.json { render json: @feature }
     end
-    # render json: @feature
   end
 
   def edit

@@ -114,7 +114,7 @@ Feature.prototype.formatFeatureShow = function() {
   showHtml += `<h1 id="name" data-id` + this.id + `>` + this.name + `</h1>`;
   showHtml += `<p><a href="/features/${this.id}/edit">Edit Feature</a> - <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${this.id}">Delete Feature</a> - <a href="#" class="js-next" data-id="${this.id}">Next Feature</a></p><br>`;
   showHtml += '<p> Rating: ' + this.rating + '</p>';
-  showHtml += '<p> Comment: ' + this.comment + '</p>';
+  showHtml += '<p> Comments: ' + this.comment + '</p>';
   showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[0].name}</a></p>`
   return showHtml;
 }

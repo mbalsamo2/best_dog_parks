@@ -18,6 +18,7 @@ class FeaturesController < ApplicationController
 
   def create
     @feature = Feature.new(feature_params)
+    binding.pry
     @feature.park_ids = params[:park_id]
     if @feature.save
       flash[:success] = "Successfully created a new feature!"

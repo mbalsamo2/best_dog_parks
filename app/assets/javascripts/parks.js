@@ -11,6 +11,7 @@ function bindEventListeners() {
     e.preventDefault();
     console.log(this.href);
     $.get(this.href + ".json").done(function(data) {
+      console.log(data)
       $('div.park_features').html('');
       data.forEach(function(feature) {
         var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment);
@@ -24,8 +25,9 @@ function bindEventListeners() {
 // REQUIREMENT 1: feature index page
   $('a#load_features_index').on('click', function(e) {
     e.preventDefault();
-    console.log(this.href)
+    //console.log(this.href)
     $.getJSON(this.href).done(function(data){
+      console.log(data)
       $('div.features_index').html('')
       data.forEach(function(feature) {
         var newFeatures = new Feature(feature.id, feature.name, feature.rating, feature.comment);
@@ -63,15 +65,17 @@ function bindEventListeners() {
       return e.id
     })
   })
-  $('.js-next').on('click', function() {
-
+  $('.js-next').on('click', function(e) {
+    e.preventDefault();
     let nextIndex
     let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
+    console.log(featuresValues)
     if (dataIdIndex === featuresValues.length - 1) {
       nextIndex = 0
     } else {
       nextIndex = dataIdIndex + 1
     }
+    console.log(nextIndex)
     // debugger
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
       // debugger
@@ -81,7 +85,7 @@ function bindEventListeners() {
       $('#rating').replaceWith(`Rating: ${data['rating']}`)
       $('#comment').replaceWith(`Comments: ${data['comment']}`)
       // debugger
-      // $('#feature_show').html('')
+       $('#feature_show').html('')
       // var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
       // var showFeature = aFeature.formatFeatureShow();
       // $('#feature_show').append(showFeature)

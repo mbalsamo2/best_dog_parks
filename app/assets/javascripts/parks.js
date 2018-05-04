@@ -57,52 +57,36 @@ function bindEventListeners() {
 
 // REQUIREMENT 2: next feature button (ALMOST WORKS)
   $.get('/features.json', function(data) {
-    featuresValues = $.map(data, function(e) {
+     featuresValues = $.map(data, function(e) {
       return e.id
     })
   })
   $('.js-next').on('click', function() {
-    var nextIndex
-    var dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
 
-    if (dataIdIndex === featuresValues.length -1)
+    let nextIndex
+    let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
+    if (dataIdIndex === featuresValues.length -1) {
       nextIndex = 0
-    else
+    } else {
       nextIndex = dataIdIndex + 1
-
-// let i = 0
-// array = $.getJSON('path/user_parks')
-// onClick('#next'){
-//   renderNext(array[i])
-//   i++
-//   if(i == array.length) i = 0
-// }
-//
-// function renderNext(element) {
-//   $('#root').replaceWith(`<div>${ element }</div>`)
-// }
-//
-// <div id='root'></div>
-
+    }
 
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
-      // debugger
-      $('#name').html(`${data['name']} -
+      debugger
+      $('#name').replaceWith(`${data['name']} -
       <a href="/features/${data['id']}/edit">Edit</a> -
-      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/items/${data['id']}">Delete</a>`)
-      $('#rating').html(`Rating: ${data['rating']}`)
-      $('#comment').html(`Comments: ${data['comment']}`)
+      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${data['id']}">Delete</a>`)
+      $('#rating').replaceWith(`Rating: ${data['rating']}`)
+      $('#comment').replaceWith(`Comments: ${data['comment']}`)
       // $('#feature_show').html('')
       // var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
       // var showFeature = aFeature.formatFeatureShow();
       // $('#feature_show').append(showFeature)
       history.pushState(null, null, '/features/' + data.id);
     })
-    // debugger
-
   })
 
-} //end of bindEventListeners function
+} // end of bindEventListeners function
 
 
 // make feautre object

@@ -45,7 +45,6 @@ function bindEventListeners() {
       url: url,
       data: data,
       success: function(response) {
-        debugger
         var newFeature = new Feature(response.id, response.name, response.rating, response.comment);
         var formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
@@ -54,6 +53,7 @@ function bindEventListeners() {
         $('#feature_comment').val('');
         // $('input[type="submit"]').prop('disabled', false) // how do i get this to work?
       }
+      // $('form input[type="submit"]').prop('disabled', false);
     });
   });
 

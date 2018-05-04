@@ -59,7 +59,7 @@ function bindEventListeners() {
     });
   });
 
-// REQUIREMENT 2: next feature button (ALMOST WORKS)
+// REQUIREMENT 2: next feature button
   $.getJSON('/features.json', function(data) {
      featuresValues = $.map(data, function(e) {
       return e.id
@@ -115,7 +115,6 @@ Feature.prototype.formatFeatureShow = function() {
   showHtml += `<p><a href="/features/${this.id}/edit">Edit Feature</a> - <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${this.id}">Delete Feature</a> - <a href="#" class="js-next" data-id="${this.id}">Next Feature</a></p><br>`;
   showHtml += '<p> Rating: ' + this.rating + '</p>';
   showHtml += '<p> Comment: ' + this.comment + '</p>';
-  // debugger
   showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[0].name}</a></p>`
   return showHtml;
 }

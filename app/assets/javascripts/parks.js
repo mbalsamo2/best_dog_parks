@@ -76,19 +76,11 @@ function bindEventListeners() {
       nextIndex = dataIdIndex + 1
     }
     console.log(nextIndex)
-    // debugger
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
-      // debugger
-      $('#name').replaceWith(`${data['name']} -
-      <a href="/features/${data['id']}/edit">Edit</a> -
-      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${data['id']}">Delete</a>`)
-      $('#rating').replaceWith(`Rating: ${data['rating']}`)
-      $('#comment').replaceWith(`Comments: ${data['comment']}`)
-      // debugger
        $('#feature_show').html('')
-      // var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
-      // var showFeature = aFeature.formatFeatureShow();
-      // $('#feature_show').append(showFeature)
+      var aFeature = new Feature(data.id, data.name, data.rating, data.comment, data.parks);
+      var showFeature = aFeature.formatFeatureShow();
+      $('#feature_show').html(showFeature)
       history.pushState(null, null, '/features/' + data.id);
     })
   })
@@ -97,11 +89,12 @@ function bindEventListeners() {
 
 
 // make feautre object
-function Feature(id, name, rating, comment) {
+function Feature(id, name, rating, comment, parks) {
   this.id = id;
   this.name = name;
   this.rating = rating;
   this.comment = comment;
+  this.parks = parks
 }
 
 // REQUIREMENT 5: Use of prototype to format
@@ -118,9 +111,12 @@ Feature.prototype.formatFeatureIndex = function() {
 // REQUIREMENT 5: Use of prototype to format
 Feature.prototype.formatFeatureShow = function() {
   var showHtml = '';
-  showHtml += `<h1 id="name" data-id` + this.id + `>` + this.name + `</h1><br>`;
-  showHtml += '<p> Rating: ' + this.rating + ' star(s)</p><br>';
+  showHtml += `<h1 id="name" data-id` + this.id + `>` + this.name + `</h1>`;
+  showHtml += `<p><a href="/features/${this.id}/edit">Edit Feature</a> - <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${this.id}">Delete Feature</a> - <a href="#" class="js-next" data-id="${this.id}">Next Feature</a></p><br>`;
+  showHtml += '<p> Rating: ' + this.rating + '</p>';
   showHtml += '<p> Comment: ' + this.comment + '</p>';
+  // debugger
+  showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[0].name}</a></p>`
   return showHtml;
 }
 

@@ -1,3 +1,5 @@
+let featuresValues
+
 $(document).on('turbolinks:load', function() {
   bindEventListeners();
 })
@@ -56,7 +58,7 @@ function bindEventListeners() {
   });
 
 // REQUIREMENT 2: next feature button (ALMOST WORKS)
-  $.get('/features.json', function(data) {
+  $.getJSON('/features.json', function(data) {
      featuresValues = $.map(data, function(e) {
       return e.id
     })
@@ -65,19 +67,20 @@ function bindEventListeners() {
 
     let nextIndex
     let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
-    if (dataIdIndex === featuresValues.length -1) {
+    if (dataIdIndex === featuresValues.length - 1) {
       nextIndex = 0
     } else {
       nextIndex = dataIdIndex + 1
     }
-
+    // debugger
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
-      debugger
+      // debugger
       $('#name').replaceWith(`${data['name']} -
       <a href="/features/${data['id']}/edit">Edit</a> -
       <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${data['id']}">Delete</a>`)
       $('#rating').replaceWith(`Rating: ${data['rating']}`)
       $('#comment').replaceWith(`Comments: ${data['comment']}`)
+      // debugger
       // $('#feature_show').html('')
       // var aFeature = new Feature(data.id, data.name, data.rating, data.comment);
       // var showFeature = aFeature.formatFeatureShow();

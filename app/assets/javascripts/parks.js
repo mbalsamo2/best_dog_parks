@@ -11,7 +11,6 @@ function bindEventListeners() {
     e.preventDefault();
     console.log(this.href);
     $.get(this.href + ".json").done(function(data) {
-      console.log(data)
       $('div.park_features').html('');
       data.forEach(function(feature) {
         var newFeature = new Feature(feature.id, feature.name, feature.rating, feature.comment);
@@ -25,10 +24,8 @@ function bindEventListeners() {
 // REQUIREMENT 1: feature index page
   $('a#load_features_index').on('click', function(e) {
     e.preventDefault();
-    //console.log(this.href)
     $.getJSON(this.href).done(function(data){
-      console.log(data)
-      $('div.features_index').html('')
+      $('div.features_index').html('');
       data.forEach(function(feature) {
         var newFeatures = new Feature(feature.id, feature.name, feature.rating, feature.comment);
         var formattedFeatures = newFeatures.formatFeaturesIndex();
@@ -53,9 +50,7 @@ function bindEventListeners() {
         $('#feature_name').val('');
         $('#feature_rating').val('');
         $('#feature_comment').val('');
-        // $('input[type="submit"]').prop('disabled', false) // how do i get this to work?
       }
-      // $('form input[type="submit"]').prop('disabled', false);
     });
   });
 
@@ -69,13 +64,13 @@ function bindEventListeners() {
     e.preventDefault();
     let nextIndex
     let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
-    console.log(featuresValues)
+    // console.log(dataIdIndex)
     if (dataIdIndex === featuresValues.length - 1) {
       nextIndex = 0
     } else {
       nextIndex = dataIdIndex + 1
     }
-    console.log(nextIndex)
+    // console.log(nextIndex)
     $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
        $('#feature_show').html('')
       var aFeature = new Feature(data.id, data.name, data.rating, data.comment, data.parks);
@@ -88,7 +83,7 @@ function bindEventListeners() {
 } // end of bindEventListeners function
 
 
-// make feautre object
+// make feature  JavaScript Model Object
 function Feature(id, name, rating, comment, parks) {
   this.id = id;
   this.name = name;
@@ -97,7 +92,7 @@ function Feature(id, name, rating, comment, parks) {
   this.parks = parks
 }
 
-// REQUIREMENT 5: Use of prototype to format
+// REQUIREMENT 5: Use of prototype to format for park features show page
 Feature.prototype.formatFeatureIndex = function() {
   var featureHtml = '';
   featureHtml += `<a href="/features/${this.id}" class="feature-title" data-id=` + this.id + '>' + this.name + '</a>';
@@ -108,18 +103,19 @@ Feature.prototype.formatFeatureIndex = function() {
   return featureHtml;
 }
 
-// REQUIREMENT 5: Use of prototype to format
+// REQUIREMENT 5: Use of prototype to format for feature show page
 Feature.prototype.formatFeatureShow = function() {
   var showHtml = '';
   showHtml += `<h1 id="name" data-id` + this.id + `>` + this.name + `</h1>`;
   showHtml += `<p><a href="/features/${this.id}/edit">Edit Feature</a> - <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/features/${this.id}">Delete Feature</a> - <a href="#" class="js-next" data-id="${this.id}">Next Feature</a></p><br>`;
   showHtml += '<p> Rating: ' + this.rating + '</p>';
   showHtml += '<p> Comments: ' + this.comment + '</p>';
-  showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[0].name}</a></p>`
+  // showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[0].name}</a></p>`
+  showHtml += `<p>Found at: <a href="/parks/${this.parks[0].id}">${this.parks[(this.parks.length) -1].name}</a></p>`
   return showHtml;
 }
 
-// REQUIREMENT 5: Use of prototype to format
+// REQUIREMENT 5: Use of prototype to format for features index page
 Feature.prototype.formatFeaturesIndex = function() {
   var featureList = '';
   featureList += '<ul>';

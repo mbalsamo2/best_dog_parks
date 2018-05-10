@@ -1,8 +1,9 @@
-let featuresValues
+// let featuresValues
 
 $(document).on('turbolinks:load', function() {
   bindEventListeners();
 })
+
 
 
 function bindEventListeners() {
@@ -37,15 +38,15 @@ function bindEventListeners() {
 // REQUIREMENT 4: submit new feature via ajax
   $('#new_feature').on('submit', function(e) {
     e.preventDefault();
-    url = this.action;
+    const url = this.action;
     const data = $(this).serialize();
     $.ajax({
       type: "POST",
       url: url,
       data: data,
       success: function(response) {
-        var newFeature = new Feature(response.id, response.name, response.rating, response.comment);
-        var formattedFeature = newFeature.formatFeatureIndex();
+        const newFeature = new Feature(response.id, response.name, response.rating, response.comment);
+        const formattedFeature = newFeature.formatFeatureIndex();
         $('div.park_features').append(formattedFeature);
         $('#feature_name').val('');
         $('#feature_rating').val('');
@@ -55,29 +56,43 @@ function bindEventListeners() {
   });
 
 // REQUIREMENT 2: next feature button
-  $.getJSON('/features.json', function(data) {
-     featuresValues = $.map(data, function(e) {
-      return e.id
-    })
-  })
+  // $.getJSON('/features.json', function(data) {
+  //    featuresValues = $.map(data, function(e) {
+  //     return e.id
+  //   })
+  // })
   $('.js-next').on('click', function(e) {
-    e.preventDefault();
-    let nextIndex
-    let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
-    // console.log(dataIdIndex)
-    if (dataIdIndex === featuresValues.length - 1) {
-      nextIndex = 0
-    } else {
-      nextIndex = dataIdIndex + 1
-    }
-    // console.log(nextIndex)
-    $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
-       $('#feature_show').html('')
-      var aFeature = new Feature(data.id, data.name, data.rating, data.comment, data.parks);
-      var showFeature = aFeature.formatFeatureShow();
-      $('#feature_show').html(showFeature)
-      history.pushState(null, null, '/features/' + data.id);
+    let featuresValues
+
+    $.getJSON('/features.json', function(data) {
+      // debugger
+       featuresValues = $.map(data, function(e) {
+         // debugger
+        return e.id
+
+      })
+    }).done(function() {
+      console.log(featuresValues)
+      e.preventDefault();
+      let nextIndex
+      let dataIdIndex = featuresValues.indexOf(parseInt($('.js-next').attr('data-id')))
+      // console.log(dataIdIndex)
+      if (dataIdIndex === featuresValues.length - 1) {
+        nextIndex = 0
+      } else {
+        nextIndex = dataIdIndex + 1
+      }
+      // console.log(nextIndex)
+      $.getJSON('/features/' + featuresValues[nextIndex], function(data) {
+         $('#feature_show').html('')
+        var aFeature = new Feature(data.id, data.name, data.rating, data.comment, data.parks);
+        var showFeature = aFeature.formatFeatureShow();
+        $('#feature_show').html(showFeature)
+        history.pushState(null, null, '/features/' + data.id);
+      })
     })
+
+
   })
 
 } // end of bindEventListeners function
